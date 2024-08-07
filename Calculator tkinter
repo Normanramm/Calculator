@@ -1,0 +1,85 @@
+import tkinter as tk
+
+class Calculator:
+    def __init__(self, master):
+        self.master = master
+        self.master.title("Simple Calculator")
+
+        # Контейнер для кнопок
+        self.frame = tk.Frame(master)
+        self.frame.pack()
+
+        # Кнопки для операций
+        self.buttons = {}
+        for i in range(10):
+            self.buttons[i] = tk.Button(self.frame, text=str(i), command=lambda x=i: self.on_button_clicked(x))
+            self.buttons[i].grid(row=0, column=i)
+
+        # Кнопки для операций
+        self.operations = {"+": "+", "-": "-", " * ": " * ", "/": "/"}
+        for key, value in self.operations.items():
+            button = tk.Button(self.frame, text=key, command=lambda x=value: self.on_operation_clicked(x))
+            button.grid(row=1, column=i)
+
+        # Кнопка для очистки экрана
+        clear_button = tk.Button(self.frame, text="C", command=self.clear_screen)
+        clear_button.grid(row=1, column=4)
+
+        # Кнопка для равенства
+        equal_button = tk.Button(self.frame, text="=", command=self.calculate)
+        equal_button.grid(row=1, column=5)
+
+        self.display = tk.Entry(self.frame)
+        self.display.grid(row=2, columnspan=6)
+
+        # Инициализация переменных
+        self.current_operator = None
+        self.first_number = ""
+        self.second_number = ""
+
+    def on_button_clicked(self, num):
+        if self.current_operator is not None:
+            self.second_number += str(num)
+        else:
+            self.first_number += str(num)
+
+        self_text = f"{self.first_number}{self.second_number}"
+        self.display.delete(0, tk.END)
+        self.display.insert(0, display_text)
+
+    def on_operation_clicked(self, operator):
+        if self.first_number != "":
+            self.current_operator = operator
+            self.display.focus_set()
+
+    def calculate(self):
+        try:
+            first_number = float(self.first_number)
+            second_number = float(self.second_number)
+        except ValueError:
+            return
+
+        if self.current_operator == "+":
+            result = first_number + second_number
+        elif self.current_operator == "-":
+            result = first_number - second_number
+        elif self.current_operator == " * ":
+            result = first_number  *  second_number
+        else:
+            result = first_number / second_number
+
+        self.display.delete(0, tk.END)
+        self.display.insert(0, str(result))
+        self.first_number = ""
+        self.second_number = ""
+
+    def clear_screen(self):
+        self.display.delete(0, tk.END)
+
+def main():
+    root = tk.Tk()
+    calculator = Calculator(root)
+    root.mainloop()
+
+if __name__ == "__main__":
+    main()
