@@ -1,4 +1,4 @@
-class ExampleClass:
+class CalculatorClass:
     def plus(self):
         a = int(input())
         b = int(input())
@@ -22,7 +22,7 @@ class ExampleClass:
         except ZeroDivisionError:
             print('На ноль делить нельзя!')
 
-    def delenie_po_modul(self):
+    def delenie_pomodul(self):
         try:
             a = int(input())
             b = int(input())
@@ -30,7 +30,7 @@ class ExampleClass:
         except ZeroDivisionError:
             print('На ноль делить нельзя!')
 
-    def vozvedei_v_stepen(self):
+    def vozvedei_vstepen(self):
         a = int(input())
         b = int(input())
         return a ** b
@@ -44,45 +44,48 @@ class ExampleClass:
             print('На ноль делить нельзя!')
 
 
-example = ExampleClass()
+calculator = CalculatorClass()
 
 
 def cal():  # Калькулятор(тут дописать другие математические операции)
     flag = input('Выберите операцию: +, -,  *, /, %, **, //: ')
     if flag == '+':
-        print(example.plus())
+        print(calculator.plus())
     elif flag == '-':
-        print(example.minus())
+        print(calculator.minus())
     elif flag == '*':
-        print(example.ymnojenie())
+        print(calculator.ymnojenie())
     elif flag == '/':
-        print(example.delenie())
+        print(calculator.delenie())
     elif flag == '%':
-        print(example.delenie_po_modul())
+        print(calculator.delenie_pomodul())
     elif flag == '**':
-        print(example.vozvedei_v_stepen())
+        print(calculator.vozvedei_vstepen())
     elif flag == '//':
-        print(example.celochislennoe_delenie())
+        print(calculator.celochislennoe_delenie())
     else:
         print('Неправильный выбор операции!')
 
 
 def vibor():  # Тут выбор на разные функции(далее будут добавлены другие программы)
-    vibor = input('''Выберите функционал: 
+    vibor_prog = input('''Выберите функционал: 
     1 - Калькулятор
-    2 - Таблица умножения
-    3 - Математические функции'''
-                  )
-    if vibor == '1':
+    2 - Математические функции
+    3 - Скачать весь ЮТУБ
+    4 - Скорость интернета'''
+                       )
+    if vibor_prog == '1':
         cal()
-    elif vibor == '2':
-        print('тут будет таблица умножения')
-    elif vibor == '3':
-        print('тут будут математические функции и возможно сделать для них отдельный class')
+    elif vibor_prog == '2':
+        pass
+    elif vibor_prog == '3':
+        pass
+    elif vibor_prog == '4':
+        pass
 
 
 vibor()
-#cal()
+# cal()
 
 
 while True:  # Возврат к выбору функционала
@@ -93,3 +96,4 @@ while True:  # Возврат к выбору функционала
         vibor()
     else:
         break
+
