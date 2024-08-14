@@ -1,54 +1,66 @@
-class CalculatorClass:  # Класс для калькулятора
+class CalculatorClass:
+    '''Класс для калькулятора(calculate)'''
+
+    def __init__(self):
+        self.operations = {
+            "+": self.plus,
+            "-": self.minus,
+            "*": self.multiply,
+            "/": self.divide,
+            "%": self.modulo,
+            "**": self.power,
+            "//": self.floor_divide
+        }
+
     def plus(self):
-        a = int(input())
-        b = int(input())
-        return f'{a} + {b} = {a + b}'
+        a = int(input("Введите первое число: "))
+        b = int(input("Введите второе число: "))
+        return f"{a} + {b} = {a + b}"
 
     def minus(self):
-        a = int(input())
-        b = int(input())
-        return f'{a} - {b} = {a - b}'
+        a = int(input("Введите первое число: "))
+        b = int(input("Введите второе число: "))
+        return f"{a} - {b} = {a - b}"
 
-    def ymnojenie(self):
-        a = int(input())
-        b = int(input())
-        return f'{a} * {b} = {a * b}'
+    def multiply(self):
+        a = int(input("Введите первое число: "))
+        b = int(input("Введите второе число: "))
+        return f"{a} * {b} = {a * b}"
 
-    def delenie(self):
+    def divide(self):
         try:
-            a = int(input())
-            b = int(input())
-            return f'{a} / {b} = {a / b}'
+            a = int(input("Введите делимое: "))
+            b = int(input("Введите делитель: "))
+            return f"{a} / {b} = {a / b}"
         except ZeroDivisionError:
-            print('На ноль делить нельзя!')
+            print("На ноль делить нельзя!")
 
-    def delenie_pomodul(self):
+    def modulo(self):
         try:
-            a = int(input())
-            b = int(input())
-            return f'{a} % {b} = {a % b}'
+            a = int(input("Введите делимое: "))
+            b = int(input("Введите делитель: "))
+            return f"{a} % {b} = {a % b}"
         except ZeroDivisionError:
-            print('На ноль делить нельзя!')
+            print("На ноль делить нельзя!")
 
-    def vozvedei_vstepen(self):
-        a = int(input())
-        b = int(input())
-        return f'{a} ** {b} = {a ** b}'
+    def power(self):
+        a = int(input("Введите основание: "))
+        b = int(input("Введите степень: "))
+        return f"{a} ** {b} = {a ** b}"
 
-    def celochislennoe_delenie(self):
+    def floor_divide(self):
         try:
-            a = int(input())
-            b = int(input())
-            return f'{a} // {b} = {a // b}'
+            a = int(input("Введите делимое: "))
+            b = int(input("Введите делитель: "))
+            return f"{a} // {b} = {a // b}"
         except ZeroDivisionError:
-            print('На ноль делить нельзя!')
+            print("На ноль делить нельзя!")
 
 
-calculator = CalculatorClass()
+class MathematicalClass:
+    '''Класс для математических функций(math)'''
 
-
-class MathematicalClass:  # Класс для математических функций
-    def tabl(self):
+    def table(self):
         for i in range(1, 10):
             print('-' * 34)
             for y in range(1, 10):
@@ -56,68 +68,54 @@ class MathematicalClass:  # Класс для математических фу�
             print()
 
 
-mathematical = MathematicalClass()
+def calculate():  # Калькулятор
+    operation = input("Выберите операцию: +, -, *, /, %, **, //: ")
+    calculator = CalculatorClass()
+    try:
+        result = calculator.operations[operation]()
+        print(result)
+    except KeyError:
+        print("Неправильный выбор операции!")
 
 
-def cal():  # Калькулятор
-    flag = input('Выберите операцию: +, -,  *, /, %, **, //: ')
-    if flag == '+':
-        print(calculator.plus())
-    elif flag == '-':
-        print(calculator.minus())
-    elif flag == '*':
-        print(calculator.ymnojenie())
-    elif flag == '/':
-        print(calculator.delenie())
-    elif flag == '%':
-        print(calculator.delenie_pomodul())
-    elif flag == '**':
-        print(calculator.vozvedei_vstepen())
-    elif flag == '//':
-        print(calculator.celochislennoe_delenie())
-    else:
-        print('Неправильный выбор операции!')
-
-
-def mathemat():  # Математические функции
-    flag_2 = input('''Математические функции:
+def math():  # Математические функции
+    choice = input("""Математические функции:
     1 - Таблица умножения
     2 - что то еще
-    3 - что то еще''')
-    if flag_2 == '1':
-        print(mathematical.tabl())
-
+    3 - что то еще""")
+    mathematical = MathematicalClass()
+    if choice == "1":
+        print(mathematical.table())
     else:
-        print('Неправильный выбор операции!')
+        print("Неправильный выбор операции!")
 
 
-def vibor():  # Тут выбор на разные функции(далее будут добавлены другие программы)
-    vibor_prog = input('''Выберите функционал: 
+def choose():  # Функция для выбора операции(наверно стоит засунуть в класс)
+    choice = input("""Выберите функционал: 
     1 - Калькулятор
     2 - Математические функции
     3 - Скачать весь ЮТУБ
-    4 - Скорость интернета '''
-                       )
-    if vibor_prog == '1':
-        cal()
-    elif vibor_prog == '2':
-        mathemat()
-    elif vibor_prog == '3':
+    4 - Скорость интернета """
+                   )
+    if choice == "1":
+        calculate()
+    elif choice == "2":
+        math()
+    elif choice == "3":
         pass
-    elif vibor_prog == '4':
+    elif choice == "4":
         pass
 
+    while True:
+        flag = input("Еще раз: да / нет: ")
+        if flag == "да" and choice == '1':
+            calculate()
+        elif flag == 'да' and choice == '2':
+            math()
+        elif flag == "нет":
+            choose()
+        else:
+            break
 
-vibor()
-# cal()
 
-
-while True:  # Возврат к выбору функционала
-    flag_3 = input('Еще раз: да / нет: ')
-    if flag_3 == 'да':
-        cal()
-    elif flag_3 == 'нет':
-        vibor()
-    else:
-        break
-
+choose()
