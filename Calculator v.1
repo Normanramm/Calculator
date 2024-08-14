@@ -1,4 +1,6 @@
 class CalculatorClass:
+    '''Класс для калькулятора(calculate)'''
+
     def __init__(self):
         self.operations = {
             "+": self.plus,
@@ -56,6 +58,8 @@ class CalculatorClass:
 
 
 class MathematicalClass:
+    '''Класс для математических функций(math)'''
+
     def table(self):
         for i in range(1, 10):
             print('-' * 34)
@@ -64,7 +68,7 @@ class MathematicalClass:
             print()
 
 
-def calculate():
+def calculate():  # Калькулятор
     operation = input("Выберите операцию: +, -, *, /, %, **, //: ")
     calculator = CalculatorClass()
     try:
@@ -74,7 +78,7 @@ def calculate():
         print("Неправильный выбор операции!")
 
 
-def math():
+def math():  # Математические функции
     choice = input("""Математические функции:
     1 - Таблица умножения
     2 - что то еще
@@ -86,7 +90,7 @@ def math():
         print("Неправильный выбор операции!")
 
 
-def choose():
+def choose():  # Функция для выбора операции(наврно стоит засунуть в класс)
     choice = input("""Выберите функционал: 
     1 - Калькулятор
     2 - Математические функции
