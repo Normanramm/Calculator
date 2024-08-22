@@ -9,3 +9,7 @@ CalculatorVAITkinter.py -  это обычный готовый калькуля
 calculatorAVI - это мой первый калькулятор когда начинал учиться
 
 
+qwerty.py  -  index.html  -  result.html  Это для непутевого сайта(мини проверка)
+
+
+
