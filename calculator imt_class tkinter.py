@@ -47,7 +47,8 @@ class App(tk.Tk):
         screen_height = self.winfo_screenheight()
         x_coordinate = int((screen_width / 2) - (self.winfo_reqwidth() / 2))
         y_coordinate = int((screen_height / 2) - (self.winfo_reqheight() / 2))
-        self.geometry("+{}+{}".format(x_coordinate, y_coordinate))
+        self.geometry("+{}+{}".format(x_coordinate, y_coordinate)) # self.geometry(f'400x250+{x_coordinate}+{y_coordinate}')
+
 
     def calculate(self):
         try:
